@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGCE-TIC | Versión Azul</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-pc-display-horizontal me-2"></i>SGCE-TIC
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal"
+        aria-expanded="false"
+        aria-label="Alternar navegación"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#modulos">Módulos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#inventario">Inventario</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reportes">Reportes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#auditoria">Auditoría</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="inicio" class="hero-section text-white">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="badge bg-light text-primary mb-3 fs-6">Versión Azul</span>
+          <h1 class="display-5 fw-bold">
+            Sistema de Gestión y Control de Equipos de TI
+          </h1>
+          <p class="lead mt-3">
+            Frontend base para el caso de estudio SGCE-TIC, orientado al control
+            de inventario, asignaciones, mantenimiento, reportes y auditoría.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a href="#inventario" class="btn btn-light btn-lg">
+              <i class="bi bi-box-seam me-2"></i>Ver inventario
+            </a>
+            <a href="#modulos" class="btn btn-outline-light btn-lg">
+              <i class="bi bi-grid me-2"></i>Explorar módulos
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card border-0 shadow-lg">
+            <div class="card-body p-4">
+              <h5 class="card-title text-primary fw-bold mb-3">
+                Acceso al sistema
+              </h5>
+
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Usuario</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    placeholder="Ej: admin_tic"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Ingrese su contraseña"
+                    required
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                  <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                </button>
+              </form>
+
+              <div id="loginMessage" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INDICADORES -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <i class="bi bi-laptop text-primary fs-1"></i>
+              <h3 class="mt-3 fw-bold" id="totalEquipos">128</h3>
+              <p class="text-muted mb-0">Equipos registrados</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <i class="bi bi-person-check text-primary fs-1"></i>
+              <h3 class="mt-3 fw-bold" id="totalAsignados">84</h3>
+              <p class="text-muted mb-0">Equipos asignados</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <i class="bi bi-tools text-primary fs-1"></i>
+              <h3 class="mt-3 fw-bold" id="totalMantenimiento">17</h3>
+              <p class="text-muted mb-0">En mantenimiento</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <i class="bi bi-clipboard-data text-primary fs-1"></i>
+              <h3 class="mt-3 fw-bold" id="totalReportes">9</h3>
+              <p class="text-muted mb-0">Reportes disponibles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULOS -->
+  <section id="modulos" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Módulos principales</h2>
+        <p class="text-muted">
+          Funcionalidades base contempladas en el caso SGCE-TIC.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-box-seam fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Inventario</h5>
+              <p class="card-text">
+                Registro, consulta y control de equipos tecnológicos con serial,
+                tipo, marca, estado y trazabilidad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-person-workspace fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Asignaciones</h5>
+              <p class="card-text">
+                Asociación de equipos a responsables, áreas y control histórico
+                de movimientos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-wrench-adjustable-circle fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Mantenimiento</h5>
+              <p class="card-text">
+                Registro de intervenciones preventivas y correctivas,
+                seguimiento técnico y actualización de estado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-file-earmark-bar-graph fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Reportes</h5>
+              <p class="card-text">
+                Generación de reportes administrativos y operativos en formatos
+                consultables.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-shield-check fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Auditoría</h5>
+              <p class="card-text">
+                Consulta de logs, trazabilidad de cambios y validación de
+                operaciones críticas del sistema.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <i class="bi bi-people fs-1 text-primary"></i>
+              <h5 class="card-title mt-3 fw-bold">Usuarios</h5>
+              <p class="card-text">
+                Acceso por roles para administrar operaciones y proteger la
+                información del entorno TIC.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVENTARIO -->
+  <section id="inventario" class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+          <h2 class="fw-bold text-primary mb-1">Inventario de equipos</h2>
+          <p class="text-muted mb-0">Vista base para la versión azul del sistema.</p>
+        </div>
+
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#equipoModal">
+          <i class="bi bi-plus-circle me-2"></i>Registrar equipo
+        </button>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-primary">
+                <tr>
+                  <th>ID</th>
+                  <th>Serial</th>
+                  <th>Tipo</th>
+                  <th>Marca</th>
+                  <th>Estado</th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody">
+                <!-- JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORTES -->
+  <section id="reportes" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Reportes del sistema</h2>
+        <p class="text-muted">
+          Resumen visual de salidas clave para la gestión del área TIC.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="fw-bold">Equipos en mantenimiento</h5>
+              <p class="text-muted">Reporte de equipos con intervención activa.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="fw-bold">Asignaciones activas</h5>
+              <p class="text-muted">Consulta de responsables y áreas asociadas.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="fw-bold">Auditoría y logs</h5>
+              <p class="text-muted">Seguimiento de acciones críticas del sistema.</p>
+              <a href="#" class="btn btn-outline-primary btn-sm">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDITORIA -->
+  <section id="auditoria" class="py-5 bg-light">
+    <div class="container">
+      <div class="mb-4">
+        <h2 class="fw-bold text-primary">Eventos recientes de auditoría</h2>
+        <p class="text-muted mb-0">
+          Evidencia visual de trazabilidad para la versión base.
+        </p>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <ul class="list-group list-group-flush" id="auditList">
+            <!-- JS -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-4">
+    <div class="container text-center">
+      <p class="mb-1 fw-semibold">SGCE-TIC | Sistema de Gestión y Control de Equipos de TI</p>
+      <small>Versión Azul - Frontend base con Bootstrap para despliegue en Netlify - Universidad Santo Tomás</small>
+    </div>
+  </footer>
+
+  <!-- MODAL REGISTRO EQUIPO -->
+  <div class="modal fade" id="equipoModal" tabindex="-1" aria-labelledby="equipoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="equipmentForm">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="equipoModalLabel">Registrar equipo</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="serial" class="form-label">Serial</label>
+              <input type="text" class="form-control" id="serial" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select id="tipo" class="form-select" required>
+                <option value="">Seleccione</option>
+                <option>Portátil</option>
+                <option>Escritorio</option>
+                <option>Impresora</option>
+                <option>Servidor</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" class="form-control" id="marca" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado</label>
+              <select id="estado" class="form-select" required>
+                <option value="">Seleccione</option>
+                <option>Operativo</option>
+                <option>En mantenimiento</option>
+                <option>Asignado</option>
+                <option>De baja</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="responsable" class="form-label">Responsable</label>
+              <input type="text" class="form-control" id="responsable" required />
+            </div>
+
+            <div id="equipmentMessage"></div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar equipo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS propio -->
+  <script src="app.js"></script>
+</body>
+</html>
